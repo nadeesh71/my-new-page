@@ -1,83 +1,53 @@
 body {
-    transition: background-color 0.5s, color 0.5s; /* Smooth transition */
-  }
-  
-  body.dark-mode {
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
-  }
-  
-  .dark-mode-toggle {
+    transition: background-color 0.5s, color 0.5s;
+    font-family: sans-serif; /* Add a default font */
+    line-height: 1.6; /* Improve readability */
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode-toggle {
     background-color: #333;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    position: fixed; /* Or absolute, as needed */
+    position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 1000;
     border-radius: 5px;
-  }
-  
-  .dark-mode-toggle.dark {
+}
+
+.dark-mode-toggle.dark {
     background-color: #e0e0e0;
     color: #121212;
-  }
-  nav {
-    background-color: #333;
-    padding: 10px 0;
 }
 
-nav ul {
-    list-style: none;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.slider-container {
-    width: 100%;
-    overflow: hidden; /* Hide overflowing images */
-}
-
-.slider {
-    display: flex; /* Arrange images horizontally */
-    transition: transform 2s ease-in-out; /* Smooth transition */
-}
-
-.slider img {
-    width: 100%;
-    height: 500px; /* Adjust as needed */
-    object-fit: contain;
-    flex-shrink: 0;
-}
 nav {
     background-color: #333;
-    padding: 10px 0;
-    display: flex; /* Use flexbox to align items */
-    justify-content: space-between; /* Distribute space between items */
-    align-items: center; /* Vertically align items */
+    padding: 10px; /* Reduced padding for smaller screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 nav ul {
     list-style: none;
     text-align: left;
-    display: flex; /*display the list as a flexbox*/
+    display: flex;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center items on smaller screens */
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 5px 10px; /* Reduced margin for smaller screens */
 }
 
 nav ul li a {
@@ -86,14 +56,16 @@ nav ul li a {
 }
 
 .search-form {
-    display: flex; /* Align input and button horizontally */
+    display: flex;
+    margin-top: 10px; /* Add margin for spacing on smaller screens */
 }
 
 .search-form input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px; /* Rounded left corners */
-    width: 200px; /* Adjust width as needed */
+    border-radius: 4px 0 0 4px;
+    width: 150px; /* Reduced width for smaller screens */
+    max-width: 100%; /* Prevent overflow on very small screens */
 }
 
 .search-form button {
@@ -101,19 +73,38 @@ nav ul li a {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0; /* Rounded right corners */
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
 }
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 2s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    height: auto; /* Make height auto for responsiveness */
+    max-height: 500px; /* Set a max-height */
+    object-fit: contain; /* Or cover, depending on your preference */
+    flex-shrink: 0;
+}
+
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax */
+    gap: 15px; /* Adjusted gap */
+    padding: 10px; /* Adjusted padding */
 }
 
 .product {
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 10px; /* Adjusted padding */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -121,7 +112,7 @@ nav ul li a {
 .product img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Adjusted margin */
 }
 
 .product:hover {
@@ -130,9 +121,33 @@ nav ul li a {
 }
 
 .product h3 {
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* Adjusted margin */
+    font-size: 1em; /* Adjusted font size */
 }
 
 .product p {
     color: #888;
+    font-size: 0.9em; /* Adjusted font size */
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        align-items: center;
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Adjusted margin for stacked items */
+    }
+
+    .search-form {
+      width: 100%;
+      justify-content: center;
+    }
+    .search-form input[type="text"], .search-form button{
+        width: auto;
+    }
+
 }
