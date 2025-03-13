@@ -151,3 +151,21 @@ nav ul li a {
     }
 
 }
+@media (max-width: 768px) {
+    /* Styles for screens 768px wide or smaller */
+    body {
+      font-size: 16px;
+    }
+    .my-element {
+      width: 100%;
+    }
+  }
+  @media (min-width: 769px) {
+    /* Styles for screens wider than 768px */
+    body {
+      font-size: 18px;
+    }
+    .my-element {
+      width: 50%;
+    }
+  }
